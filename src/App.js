@@ -23,7 +23,11 @@ class App extends Component {
   getData = (userName) => {
     fetch(`https://api.github.com/users/${userName}`)
       .then((res) => res.json())
-      .then((data) => this.setState({ userData: data }));
+      .then((data) => this.setState({ userData: data }))
+      .catch((error) => {
+        alert("Oops! Could not reach GitHub");
+        console.log("Oops! We have an error", error);
+      });
   };
 
   render() {
@@ -31,7 +35,13 @@ class App extends Component {
       <Fragment>
         <Banner />
         <SearchBox onInputChange={this.onInputChange} />
-        {this.state.userData && this.state.searchName !== "" ? <Card profile={this.state.userData} /> : <div className="no-data">No user Found</div>}
+        {this.state.userData.id && this.state.searchName !== "" ? (
+          <Card profile={this.state.userData} />
+        ) : (
+          <div className="no-data">
+            No user Found! <br />
+          </div>
+        )}
       </Fragment>
     );
   }
