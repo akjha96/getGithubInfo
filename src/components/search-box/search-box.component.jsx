@@ -9,7 +9,7 @@ const SearchBox = ({ onInputChange }) => {
   return (
     <Fragment>
       <form
-        autocomplete="off"
+        autoComplete="off"
         onSubmit={(e) => {
           e.preventDefault();
         }}
