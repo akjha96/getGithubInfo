@@ -39,7 +39,7 @@ class App extends Component {
           <Card profile={this.state.userData} />
         ) : (
           <div className="no-data">
-            No user Found!! <br />
+            No user Found! <br />
           </div>
         )}
       </Fragment>
